@@ -1,11 +1,11 @@
 (function() {
 "use strict";
 
-var supportsMultiple = self.HTMLInputElement && "valueLow" in HTMLInputElement.prototype;
+var supportsMultiple = window.HTMLInputElement && "valueLow" in HTMLInputElement.prototype;
 
 var descriptor = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value");
 
-self.multirange = function(input) {
+var multirange = function(input) {
 	if (supportsMultiple || input.classList.contains("multirange")) {
 		return;
 	}
@@ -65,5 +65,7 @@ self.multirange = function(input) {
 
 	update();
 }
+
+module.exports = multirange;
 
 })();
